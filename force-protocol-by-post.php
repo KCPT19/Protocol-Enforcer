@@ -1,0 +1,92 @@
+<?php
+/**
+ * Plugin Name: Force Protocol By Post
+ * Author: Fastmover
+ * Description: Plugin to allow user to specify by post, whether to force http or https.
+ * Text Domain: kcptforceprotocol
+ */
+
+class KCPT_Force_Protocol
+{
+
+    public $slug = "kcpt-force-protocol";
+
+    public function __construct()
+    {
+
+        add_action( 'add_meta_boxes', array( $this, 'metabox' ) );
+        add_action( 'save_post', [ $this, 'saveMetabox' ] );
+
+    }
+
+    public function metabox()
+    {
+
+        add_meta_box( $this->slug, __( 'Force Protocol', 'kcptforceprotocol' ), array( $this, 'viewMetabox' ), null, 'side', 'high' );
+
+    }
+
+    public function saveMetabox( $postID )
+    {
+
+        global $post;
+
+        if ( ! isset( $_POST[ 'kcpt_metabox_protocol_nonce' ] ) || ! wp_verify_nonce( $_POST[ 'kcpt_metabox_protocol_nonce' ],
+                basename( __FILE__ ) )
+        ) {
+            return $postID;
+        }
+
+        if (
+            ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) ||
+            ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ||
+            isset( $_REQUEST[ 'bulk_edit' ] ) ||
+            ( isset( $post->post_type ) && $post->post_type == 'revision' ) ||
+            ( ! current_user_can( 'edit_post', $postID ) ) ||
+            ( isset( $_POST[ 'post_type' ] ) && 'post' != $_POST[ 'post_type' ] )
+        ) {
+            return $postID;
+        }
+
+        if( ! isset( $_POST[ 'forceprotocol' ] ) )
+            return $postID;
+
+        $option = sanitize_text_field( $_POST[ 'forceprotocol' ] );
+
+        if( ! empty( $option ) )
+            update_post_meta( $postID, 'forceprotocol', $option );
+
+        return $postID;
+
+    }
+
+    public function viewMetabox()
+    {
+
+        global $post;
+
+        $meta = get_post_custom( $post->ID );
+
+
+        $option = "default";
+
+        if ( isset( $meta[ 'forceprotocol' ][ 0 ] ) and ! empty( $meta[ 'forceprotocol' ][ 0 ] )) {
+            $option = $meta[ 'forceprotocol' ][0];
+        }
+
+//        var_dump( $meta );
+
+        ?>
+        <input type="hidden" name="kcpt_metabox_protocol_nonce" value="<?= wp_create_nonce( basename( __FILE__ ) ); ?>"/>
+        <select name="forceprotocol">
+            <option value="default" <?php if( $option == "default" ): ?>selected="selected"<?php endif; ?>>Default</option>
+            <option value="http" <?php if( $option == "http" ): ?>selected="selected"<?php endif; ?>>HTTP</option>
+            <option value="https" <?php if( $option == "https" ): ?>selected="selected"<?php endif; ?>>HTTPS</option>
+        </select>
+<?php
+
+    }
+
+}
+
+new KCPT_Force_Protocol();
