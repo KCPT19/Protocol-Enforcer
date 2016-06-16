@@ -6,7 +6,7 @@
  * Author: KCPT
  * Author URI: http://www.KCPT.org
  * License: GPLv2 or later
-
+ * Version: 0.1
  * Text Domain: protocolenforcer
  */
 class KCPT_Protocol_Enforcer
