@@ -97,8 +97,7 @@ class KCPT_Protocol_Enforcer
             ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ||
             isset( $_REQUEST[ 'bulk_edit' ] ) ||
             ( isset( $post->post_type ) && $post->post_type == 'revision' ) ||
-            ( ! current_user_can( 'edit_post', $postID ) ) ||
-            ( isset( $_POST[ 'post_type' ] ) && 'post' != $_POST[ 'post_type' ] )
+            ( ! current_user_can( 'edit_post', $postID ) )
         ) {
             return $postID;
         }
