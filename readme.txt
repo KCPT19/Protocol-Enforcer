@@ -22,8 +22,8 @@ A simple drop down selection meta box on a post edit page will allow you to spec
 
 == Screenshots ==
 
-1. Picture of the widget just after it was added.  It is empty and not filled out yet.
-2. The widget filled out.
+1. The metabox
+2. The metabox with the select options expanded.
 
 == Changelog ==
 
