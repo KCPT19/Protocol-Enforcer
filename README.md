@@ -6,4 +6,4 @@ Screenshots
 
 ![Protocol Enforcer WordPress Plugin](/protocol-enforcer-1.jpg?raw=true "Protocol Enforcer WordPress Plugin")
 
-![Protocol Enforcer WordPress Plugin](/protocol-enforcer-1.jpg?raw=true "Protocol Enforcer WordPress Plugin")
+![Protocol Enforcer WordPress Plugin](/protocol-enforcer-2.jpg?raw=true "Protocol Enforcer WordPress Plugin")
