@@ -1,10 +1,10 @@
 <?php
 
 /**
- * Plugin Name: Force Protocol By Post
- * Author: Fastmover
+ * Plugin Name: Protocol Enforcer
+ * Author: KCPT
  * Description: Plugin to allow user to specify by post, whether to force http or https.
- * Text Domain: kcptforceprotocol
+ * Text Domain: protocolenforcer
  */
 class KCPT_Force_Protocol
 {
@@ -23,7 +23,7 @@ class KCPT_Force_Protocol
     public function metabox()
     {
 
-        add_meta_box( $this->slug, __( 'Force Protocol', 'kcptforceprotocol' ), [ $this, 'viewMetabox' ], null, 'side', 'high' );
+        add_meta_box( $this->slug, __( 'Force Protocol', 'protocolenforcer' ), [ $this, 'viewMetabox' ], null, 'side', 'high' );
 
     }
 
