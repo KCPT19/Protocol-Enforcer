@@ -2,11 +2,14 @@
 
 /**
  * Plugin Name: Protocol Enforcer
- * Author: KCPT
  * Description: Plugin to allow user to specify by post, whether to force http or https.
+ * Author: KCPT
+ * Author URI: http://www.KCPT.org
+ * License: GPLv2 or later
+
  * Text Domain: protocolenforcer
  */
-class KCPT_Force_Protocol
+class KCPT_Protocol_Enforcer
 {
 
     public $slug = "kcpt-force-protocol";
@@ -143,4 +146,4 @@ class KCPT_Force_Protocol
 
 }
 
-new KCPT_Force_Protocol();
+new KCPT_Protocol_Enforcer();
