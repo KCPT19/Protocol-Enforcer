@@ -13,6 +13,7 @@ class KCPT_Protocol_Enforcer
 {
 
     public $slug = "kcpt-force-protocol";
+    public $url = false;
 
     public function __construct()
     {
@@ -63,6 +64,7 @@ class KCPT_Protocol_Enforcer
             case 'http':
                 if ($protocol == "https") {
                     $URL = $option . '://' . $_SERVER[ 'HTTP_HOST' ] . $_SERVER[ 'REQUEST_URI' ];
+                    $this->url = $URL;
                     wp_safe_redirect( $URL, 301 );
                     exit;
                 }
@@ -70,6 +72,7 @@ class KCPT_Protocol_Enforcer
             case 'https':
                 if ($protocol == "http") {
                     $URL = $option . '://' . $_SERVER[ 'HTTP_HOST' ] . $_SERVER[ 'REQUEST_URI' ];
+                    $this->url = $URL;
                     wp_safe_redirect( $URL, 301 );
                     exit;
                 }
@@ -145,4 +148,4 @@ class KCPT_Protocol_Enforcer
 
 }
 
-new KCPT_Protocol_Enforcer();
+$KCPTProtocolEnforcer = new KCPT_Protocol_Enforcer();
