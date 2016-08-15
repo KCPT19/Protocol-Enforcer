@@ -3,8 +3,8 @@ Contributors: KCPT, Fastmover, jirrodglynn
 Donate link: http://KCPT.org/
 Tags: http, https
 Requires at least: 4.1
-Tested up to: 4.5.2
-Stable tag: 0.2
+Tested up to: 4.6
+Stable tag: 0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -33,3 +33,6 @@ A simple drop down selection meta box on a post edit page will allow you to spec
 
 = 0.2 =
 * Contributors update
+
+= 0.3 =
+* Added global variable for object to access the inteded redirection URL.
